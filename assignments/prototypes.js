@@ -62,7 +62,7 @@ Humanoid.prototype.greet = function () {
 };
 
 Humanoid.prototype.attack = function (target) {
-  const atkDamage = damageRoll(5);
+  const atkDamage = damageRoll(6);
   target.healthPoints = target.healthPoints - atkDamage;
   return `${this.name} attacked ${target.name}, dealing ${atkDamage} damage!`;
 };
