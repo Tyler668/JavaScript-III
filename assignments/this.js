@@ -19,12 +19,13 @@ When using an additional specifier such as .call , .apply, or .bind, 'this' can 
 */
 
 // Principle 1
-
 // code example for Window Binding
 const example = this;
 console.log(this);   //Puts out the window object
 
+
 // Principle 2
+// code example for Implicit Binding
 const exampleObject = {
     name: "Tyler",
     height: '6ft 1in',
@@ -32,15 +33,29 @@ const exampleObject = {
         console.log(`My name is ${this.name} and I am ${this.height} tall.`);   //'This' is automatically assigned to exampleObject since it precedes the dot notation for the function.
     }
 }
-
 exampleObject.speak();
 
-// code example for Implicit Binding
 
 // Principle 3
-
 // code example for New Binding
+function Animal (critter){
+    name = critter.name;
+    console.log(this.name);    //'This' refers to the object passed into the constructor as an argument, in this case, the 'dog' object. It grabs the name 'fido'
+}
+
+const dog = {
+    name: 'fido',
+    breed: 'german shepherd',
+}
+
+Animal(dog);
 
 // Principle 4
-
 // code example for Explicit Binding
+
+const fish = {
+    name: 'Swimmy',
+    breed: "I don't know fish breeds",
+}
+
+Animal(fish);
