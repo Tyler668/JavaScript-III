@@ -39,8 +39,10 @@ exampleObject.speak();
 // Principle 3
 // code example for New Binding
 function Animal (critter){
-    name = critter.name;
-    console.log(this.name);    //'This' refers to the object passed into the constructor as an argument, in this case, the 'dog' object. It grabs the name 'fido'
+    this.name = critter.name;
+    this.speak = function(){
+        console.log(`I am ${this.name}`);    //'This' refers to the object passed into the constructor as an argument, in this case, the 'dog' object. It grabs the name 'fido'
+    }  
 }
 
 const dog = {
@@ -48,7 +50,10 @@ const dog = {
     breed: 'german shepherd',
 }
 
-Animal(dog);
+const newDog = new Animal(dog);
+newDog.speak();
+
+
 
 // Principle 4
 // code example for Explicit Binding
@@ -58,4 +63,4 @@ const fish = {
     breed: "I don't know fish breeds",
 }
 
-Animal(fish);
+newDog.speak.call(fish);   //Despite using the newDog object I was able to make 'this' refer to my fish object by using the call function and explicitly define it.
